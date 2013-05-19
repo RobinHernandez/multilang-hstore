@@ -34,6 +34,9 @@ module Multilang
         clear
         value.each{|k, v| write(k, v)}
       elsif value.is_a?(String)
+				# EC 20130519 - TODO tests
+				@model.send(:"#{@attribute}_will_change!") unless read(actual_locale) == value
+				####
         write(actual_locale, value)
       end
       flush!
